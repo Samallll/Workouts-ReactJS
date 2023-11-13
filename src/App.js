@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import ThirdComponent from './Components/ThirdComponent';
+import MapData from './Components/MapData';
+import UserInformation from './Components/UserInformation';
+import FormData from './Components/FormData';
 
 function App() {
+  const data = "jingle";
+  const[count,setCount] = useState(1);
+
+  const addCount = () => {
+    setCount(count+1);
+  }
+
+  const reduceCount = ()=>{
+    if(count>1){
+      setCount(count-1);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Counter : {count}</h1>
+      <button onClick={addCount}>Increment</button>
+      <button onClick={reduceCount}>Decrement</button>
+      <UserInformation count={count} />
+      {/* <ThirdComponent data={data}/> */}
+      <FormData/>
+      <MapData/>
+      
     </div>
   );
 }
