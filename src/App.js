@@ -41,6 +41,13 @@ function App() {
       <Suspense>
       { lazyOn && <LazyCall/>}
       </Suspense>
+      <hr/>
+      <button onClick={()=>{
+        const pr = import('./Components/DynamicImport')
+        pr.then((data)=>{
+          console.log(data.foo());
+        })
+      }}>Click here for console dynamic import</button>
     </div>
   );
 }
