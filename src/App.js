@@ -4,9 +4,9 @@ import ThirdComponent from './Components/ThirdComponent';
 import MapData from './Components/MapData';
 import UserInformation from './Components/UserInformation';
 import FormData from './Components/FormData';
+import JustInfo from './Components/JustInfo';
 
 function App() {
-  const data = "jingle";
   const[count,setCount] = useState(1);
 
   const addCount = () => {
@@ -27,6 +27,7 @@ function App() {
       <UserInformation count={count} />
       {/* <ThirdComponent data={data}/> */}
       <FormData/>
+      <JustInfo/>
       <MapData/>
       
     </div>

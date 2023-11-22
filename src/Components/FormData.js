@@ -1,10 +1,9 @@
-import {useRef,useState,useEffect} from "react";
+import {useState} from "react";
 
 function FormData() {
 
     const[input,setInput] = useState("");
     const[error,setError] = useState("");
-    const inputRef = useRef();
 
     const submission = (e) => {
         e.preventDefault();
@@ -18,13 +17,9 @@ function FormData() {
         setInput(e.target.value)
     }
 
-    useEffect(()=>{
-        inputRef.current.focus();
-    },[]);
-
     return (
       <form onSubmit={submission}>
-        <input type="text" ref={inputRef} value={input} onChange={handleInputChange}/>
+        <input type="text" value={input} onChange={handleInputChange}/>
         <input type="submit" value="Hellooooo"/>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
