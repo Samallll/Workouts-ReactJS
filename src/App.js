@@ -1,13 +1,20 @@
 import './App.css';
-import { useState } from 'react';
+import React,{ useState , Suspense } from 'react';
 import ThirdComponent from './Components/ThirdComponent';
 import MapData from './Components/MapData';
 import UserInformation from './Components/UserInformation';
 import FormData from './Components/FormData';
 import JustInfo from './Components/JustInfo';
 
+const LazyCall = React.lazy(()=>{
+  return import('./Components/LazyComponent')
+})
+
 function App() {
   const[count,setCount] = useState(1);
+  const[lazyOn,setLazyOn] = useState(false);
+
+  const data = "This is for showing the props data passing";
 
   const addCount = () => {
     setCount(count+1);
@@ -25,11 +32,15 @@ function App() {
       <button onClick={addCount}>Increment</button>
       <button onClick={reduceCount}>Decrement</button>
       <UserInformation count={count} />
-      {/* <ThirdComponent data={data}/> */}
+      <ThirdComponent data={data}/>
       <FormData/>
       <JustInfo/>
       <MapData/>
-      
+      <hr/>
+      <button onClick={()=>setLazyOn(!lazyOn)}>Show/Hide Pledge</button>
+      <Suspense>
+      { lazyOn && <LazyCall/>}
+      </Suspense>
     </div>
   );
 }
