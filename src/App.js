@@ -27,13 +27,14 @@ function App() {
   }
 
   return (
+    
     <div>
       <h1>Counter : {count}</h1>
       <button onClick={addCount}>Increment</button>
       <button onClick={reduceCount}>Decrement</button>
       <UserInformation count={count} />
       <ThirdComponent data={data}/>
-      <FormData/>
+      <FormData />
       <JustInfo/>
       <MapData/>
       <hr/>
@@ -42,12 +43,6 @@ function App() {
       { lazyOn && <LazyCall/>}
       </Suspense>
       <hr/>
-      <button onClick={()=>{
-        const pr = import('./Components/DynamicImport')
-        pr.then((data)=>{
-          console.log(data.foo());
-        })
-      }}>Click here for console dynamic import</button>
     </div>
   );
 }

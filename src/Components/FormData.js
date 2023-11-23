@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function FormData() {
 
@@ -16,10 +16,15 @@ function FormData() {
     const handleInputChange = (e) => {
         setInput(e.target.value)
     }
+    const inputref = useRef()
+    useEffect(() => {
+
+      inputref.current.focus();
+    },[])
 
     return (
       <form onSubmit={submission}>
-        <input type="text" value={input} onChange={handleInputChange}/>
+        <input ref={inputref} type="text" value={input} onChange={handleInputChange}/>
         <input type="submit" value="Hellooooo"/>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
